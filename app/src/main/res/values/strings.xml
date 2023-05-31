@@ -13,4 +13,7 @@
     <string name="timeInAm">AM</string>
     <string name="timeInPm">PM</string>
     <string name="status_pending">Pending</string>
+    <string name="filter_by_date">Filter by Date</string>
+    <string name="select_date">Select Date</string>
+    <string name="no_task_for_selected_date">No Tasks For Date!</string>
 </resources>

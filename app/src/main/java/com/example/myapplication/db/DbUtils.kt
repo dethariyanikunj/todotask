@@ -34,6 +34,11 @@ object DbUtils {
         return realm.query<TaskInfo>().find()
     }
 
+    fun retrieveDateWiseTasks(startTime: Long, endTime: Long): RealmResults<TaskInfo> {
+        val realm: Realm = Realm.open(config)
+        return realm.query<TaskInfo>("time >= $startTime AND time <= $endTime").find()
+    }
+
     fun deleteTask(info: TaskInfo) {
         val realm: Realm = Realm.open(config)
         realm.writeBlocking {
@@ -44,5 +49,4 @@ object DbUtils {
             }
         }
     }
-
 }

@@ -9,7 +9,6 @@ class TaskInfo : RealmObject {
     @PrimaryKey
     var _id: ObjectId = ObjectId()
     var task: String = ""
-    var type: String = ""
     var time: Long = 0
     var isSelected: Boolean = false
 }
