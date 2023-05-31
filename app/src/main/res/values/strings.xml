@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">To-Do Management</string>
+    <string name="task_list">Task List</string>
+    <string name="confirmation_title">Warning</string>
+    <string name="confirmation_message">Do you want to delete "%1$s", this action can’t be undone.</string>
+    <string name="confirmation_ok">OK</string>
+    <string name="confirmation_cancel">Cancel</string>
+    <string name="add_task">Add a task</string>
+    <string name="task_title">Task Title</string>
+    <string name="task_time">Time</string>
+    <string name="task_cancel">Cancel</string>
+    <string name="task_add">Add</string>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="task_list_text_size">@dimen/_24ssp</dimen>
+    <dimen name="title_text_size">@dimen/_20ssp</dimen>
+    <dimen name="title_bar_height">@dimen/_64sdp</dimen>
+    <dimen name="task_list_title_height">@dimen/_160sdp</dimen>
+    <dimen name="screen_horizontal_margin">@dimen/_20sdp</dimen>
+    <dimen name="add_task_screen_horizontal_margin">@dimen/_30sdp</dimen>
+</resources>

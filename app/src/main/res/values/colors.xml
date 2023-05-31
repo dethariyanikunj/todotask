@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#A14AAD</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="taskBgColor">#FEF7FF</color>
+    <color name="redColor">#EF0000</color>
+    <color name="titleColor">#1D1B20</color>
+    <color name="fieldTextColor">#1D1B20</color>
+    <color name="taskListColor">#161717</color>
+    <color name="taskTimeColor">#80161717</color>
+    <color name="fabColor">#ECE6F0</color>
+    <color name="taskListBgColor">#B7B7B7</color>
+    <color name="buttonBgColor">#6750A4</color>
+</resources>
