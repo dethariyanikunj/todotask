@@ -61,6 +61,7 @@
         android:layout_marginEnd="@dimen/screen_horizontal_margin"
         android:background="@drawable/shape_black_rounded"
         android:orientation="vertical"
+        android:overScrollMode="never"
         android:paddingStart="@dimen/_16sdp"
         android:paddingEnd="@dimen/_16sdp"
         android:paddingBottom="@dimen/_16sdp"
@@ -68,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleBar"
-        tools:itemCount="5"
+        tools:itemCount="15"
         tools:listitem="@layout/item_tasks" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton

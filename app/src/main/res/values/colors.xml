@@ -7,7 +7,9 @@
     <color name="titleColor">#1D1B20</color>
     <color name="fieldTextColor">#1D1B20</color>
     <color name="taskListColor">#161717</color>
+    <color name="pendingStatusColor">#80000000</color>
     <color name="taskTimeColor">#80161717</color>
+    <color name="fieldHintTextColor">#49454F</color>
     <color name="fabColor">#ECE6F0</color>
     <color name="taskListBgColor">#B7B7B7</color>
     <color name="buttonBgColor">#6750A4</color>

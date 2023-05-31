@@ -25,20 +25,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        init()
+        handleClickEvents()
+    }
+
+    private fun init() {
+        val list = DbUtils.retrieveTasks()
+        watchOnTaskChanges(list)
+        updateList(list)
+    }
+
+    private fun handleClickEvents() {
         binding.fab.setOnClickListener {
             startActivity(Intent(this@MainActivity, AddTaskActivity::class.java))
         }
         binding.ivBack.setOnClickListener {
             finish()
         }
-        val list = DbUtils.retrieveTasks()
-        watchOnTaskChanges(list)
-        val arrayList = ArrayList<TaskInfo>()
-        arrayList.addAll(list)
-        updateList(arrayList)
     }
 
-    private fun updateList(list: ArrayList<TaskInfo>) {
+    private fun updateList(list: RealmResults<TaskInfo>) {
         if (list.isEmpty()) {
             binding.rvTask.visibility = View.GONE
         } else {
@@ -54,9 +60,7 @@ class MainActivity : AppCompatActivity() {
                 when (changes) {
                     is UpdatedResults -> {
                         CoroutineScope(Dispatchers.Main).launch {
-                            val arrayList = ArrayList<TaskInfo>()
-                            arrayList.addAll(changes.list)
-                            updateList(arrayList)
+                            updateList(changes.list)
                         }
                     }
                     else -> {

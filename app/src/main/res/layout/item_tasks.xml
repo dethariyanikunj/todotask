@@ -11,21 +11,40 @@
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
         android:src="@drawable/ic_uncheck"
+        app:layout_constraintBottom_toBottomOf="@+id/llTask"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/llTask" />
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llTask"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_12sdp"
-        android:textColor="@color/taskListColor"
-        android:textSize="@dimen/_12ssp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvTime"
         app:layout_constraintStart_toEndOf="@+id/ivCheckUncheck"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Prototype" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:textColor="@color/taskListColor"
+            android:textSize="@dimen/_12ssp"
+            tools:text="Prototype" />
+
+        <TextView
+            android:id="@+id/tvPendingStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="@string/status_pending"
+            android:textColor="@color/pendingStatusColor"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="gone" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     <TextView
@@ -35,9 +54,9 @@
         android:layout_marginEnd="@dimen/_12sdp"
         android:textColor="@color/taskTimeColor"
         android:textSize="@dimen/_12ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/llTask"
         app:layout_constraintEnd_toStartOf="@+id/ivClose"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/llTask"
         tools:text="8:00 AM" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -45,9 +64,9 @@
         android:layout_width="@dimen/_12sdp"
         android:layout_height="@dimen/_12sdp"
         android:src="@drawable/ic_close"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/llTask"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/llTask" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

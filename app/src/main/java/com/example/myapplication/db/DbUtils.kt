@@ -22,6 +22,13 @@ object DbUtils {
         }
     }
 
+    fun markTaskCompleted(info: TaskInfo, isCompleted: Boolean) {
+        val realm: Realm = Realm.open(config)
+        realm.writeBlocking {
+            findLatest(info)?.isSelected = isCompleted
+        }
+    }
+
     fun retrieveTasks(): RealmResults<TaskInfo> {
         val realm: Realm = Realm.open(config)
         return realm.query<TaskInfo>().find()

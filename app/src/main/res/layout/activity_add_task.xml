@@ -45,19 +45,93 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
+            android:id="@+id/tlTaskTitle"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/task_title"
             android:textColor="@color/fieldTextColor"
-            app:hintTextColor="@color/fieldTextColor">
+            android:textColorHint="@color/fieldHintTextColor"
+            app:boxStrokeColor="@color/field_stroke_color"
+            app:expandedHintEnabled="false"
+            app:hintTextColor="@color/fieldHintTextColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llTime"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/flTaskTime"
+                android:layout_alignBottom="@+id/flTaskTime"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/field_stroke"
+                android:paddingStart="@dimen/_5sdp">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/fieldTextColor"
+                    android:gravity="end"
+                    android:padding="0dp"
+                    android:spinnerMode="dropdown" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <FrameLayout
+                android:id="@+id/flTaskTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_toStartOf="@+id/llTime">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlTaskTime"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/task_time"
+                    android:textColor="@color/fieldTextColor"
+                    android:textColorHint="@color/fieldHintTextColor"
+                    app:boxStrokeColor="@color/field_stroke_color"
+                    app:expandedHintEnabled="false"
+                    app:hintTextColor="@color/fieldHintTextColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:imeOptions="actionDone"
+                        android:inputType="none"
+                        android:longClickable="false"
+                        android:maxLines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llTimeClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </FrameLayout>
+
+        </RelativeLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -71,9 +145,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="4dp"
+                android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/shape_cancel_button"
-                android:padding="6dp"
+                android:padding="@dimen/_5sdp"
                 android:text="@string/task_cancel"
                 android:textColor="@color/primary"
                 android:textStyle="bold" />
@@ -83,9 +157,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="4dp"
+                android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/shape_add_button"
-                android:padding="6dp"
+                android:padding="@dimen/_5sdp"
                 android:text="@string/task_add"
                 android:textColor="@color/white"
                 android:textStyle="bold" />

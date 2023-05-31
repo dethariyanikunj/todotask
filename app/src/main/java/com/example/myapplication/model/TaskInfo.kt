@@ -11,6 +11,5 @@ class TaskInfo : RealmObject {
     var task: String = ""
     var type: String = ""
     var time: Long = 0
-    @Ignore
     var isSelected: Boolean = false
 }

@@ -13,10 +13,12 @@ import com.example.myapplication.R
 import com.example.myapplication.db.DbUtils
 import com.example.myapplication.model.TaskInfo
 import com.example.myapplication.utils.AppHelper
+import com.example.myapplication.utils.AppHelper.strike
 import com.example.myapplication.utils.CustomDialog
+import io.realm.kotlin.query.RealmResults
 
 
-class TaskItemAdapter(private val context: Context, private val mList: ArrayList<TaskInfo>) :
+class TaskItemAdapter(private val context: Context, private val mList: RealmResults<TaskInfo>) :
     RecyclerView.Adapter<TaskItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,9 +28,17 @@ class TaskItemAdapter(private val context: Context, private val mList: ArrayList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val currentTime = System.currentTimeMillis()
         val itemViewModel = mList[position]
+        holder.tvPendingStatus.visibility = View.GONE
+        holder.tvTitle.setTextColor(ContextCompat.getColor(context, R.color.taskListColor))
+        if (currentTime > itemViewModel.time && !itemViewModel.isSelected) {
+            holder.tvPendingStatus.visibility = View.VISIBLE
+            holder.tvTitle.setTextColor(ContextCompat.getColor(context, R.color.redColor))
+        }
         holder.tvTitle.text = itemViewModel.task
-        holder.tvTime.text = AppHelper.getDateFromMilliseconds(itemViewModel.time)
+        holder.tvTime.text =
+            AppHelper.getDateFromMilliseconds(itemViewModel.time, AppHelper.timeDateFormat)
         if (itemViewModel.isSelected) {
             holder.checkUncheck.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -36,6 +46,7 @@ class TaskItemAdapter(private val context: Context, private val mList: ArrayList
                     R.drawable.ic_check
                 )
             )
+            holder.tvTitle.strike = true
         } else {
             holder.checkUncheck.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -43,6 +54,7 @@ class TaskItemAdapter(private val context: Context, private val mList: ArrayList
                     R.drawable.ic_uncheck
                 )
             )
+            holder.tvTitle.strike = false
         }
         holder.deleteTask.setOnClickListener {
             val customDialog = CustomDialog(
@@ -60,8 +72,7 @@ class TaskItemAdapter(private val context: Context, private val mList: ArrayList
         }
         holder.checkUncheck.setOnClickListener {
             val updatedValue = !itemViewModel.isSelected
-            mList[position].isSelected = updatedValue
-            notifyItemChanged(position, mList[position])
+            DbUtils.markTaskCompleted(mList[position], updatedValue)
         }
     }
 
@@ -71,6 +82,7 @@ class TaskItemAdapter(private val context: Context, private val mList: ArrayList
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
+        val tvPendingStatus: TextView = itemView.findViewById(R.id.tvPendingStatus)
         val tvTime: TextView = itemView.findViewById(R.id.tvTime)
         val deleteTask: ImageView = itemView.findViewById(R.id.ivClose)
         val checkUncheck: ImageView = itemView.findViewById(R.id.ivCheckUncheck)
