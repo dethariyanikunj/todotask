@@ -89,6 +89,11 @@ class AddTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 calendar.set(Calendar.AM_PM, Calendar.PM)
             }
 
+            // If past dates -> next date will be automatically add with selected time
+            if (calendar.timeInMillis < System.currentTimeMillis()) {
+                calendar.set(Calendar.DATE, calendar[Calendar.DATE] + 1)
+            }
+
             if (task.isNotEmpty()) {
                 DbUtils.saveTasks(
                     taskTime = calendar.timeInMillis,
